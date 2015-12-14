@@ -1,5 +1,3 @@
-
-
 require.config({
 	paths :{
 		jquery : "jquery-2.1.4.min"
@@ -112,8 +110,10 @@ define("tasks", ["jquery", "taskData", "taskRenderer"], function($, taskData, ta
 	};
 });
 
-define("app", ["jquery", "tasks"], function($, tasks){
-	
+define("app", function(require, exports, module){
+	var $ = require("jquery");
+	var tasks = require("tasks");
+
 	function _addTask(){
 		tasks.add();
 	}
@@ -140,14 +140,13 @@ define("app", ["jquery", "tasks"], function($, tasks){
 		$("#cancel-button").on("click", _cancelChanges);
 		$("#task-list").on("click", ".delete-button", _deleteTask);
 	}
-
-	return {
-		init : function()
+	
+	// makes the method public
+	exports.init = function()
 		{
 			_registerEventHandlers();
 			tasks.render();
 		}
-	};
 });
 
 require(["app"], function(app) {
