@@ -1,5 +1,5 @@
 // tasks.js
-define(["jquery", "data/taskData", "renderer/taskRenderer"], function($, taskData, taskRenderer){
+define(["jquery", "data/taskData", "renderers/taskRenderer"], function($, taskData, taskRenderer){
 	function add(){
 		taskRenderer.renderNew();
 	}
